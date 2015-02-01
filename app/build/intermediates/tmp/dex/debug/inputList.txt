@@ -1,0 +1,3 @@
+C:\Users\zgleit\AndroidstudioProjects\BluetoothResponder\app\build\intermediates\classes\debug
+C:\Users\zgleit\AndroidstudioProjects\BluetoothResponder\app\build\intermediates\pre-dexed\debug\classes-c8253e251e547359534f4d1a4ade552ea0c0dab5.jar
+C:\Users\zgleit\AndroidstudioProjects\BluetoothResponder\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-8c3973419887b566b52b15d06b976a03911c7478.jar
