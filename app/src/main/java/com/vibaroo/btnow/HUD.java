@@ -32,15 +32,14 @@ public class HUD extends Service {
     	final KeyguardManager keyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         keyguardLock = keyguardManager.newKeyguardLock("TAG");
         keyguardLock.disableKeyguard();
-    	WindowManager.LayoutParams params = new WindowManager.LayoutParams(
+        WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-                | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-                | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH
-                | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-                | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON,
-                 PixelFormat.TRANSLUCENT);
+                        | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                        | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH
+                        | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON,
+                PixelFormat.TRANSLUCENT);
 	    WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
 	    LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 	    myView = inflater.inflate(R.layout.activity_main, null);
@@ -49,26 +48,14 @@ public class HUD extends Service {
 	    wm.addView(myView, params);	    	
 		IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
 	    mReceiver = new OffReceiver();
-	    registerReceiver(mReceiver, filter); 
-	    launchIntent = new Intent(Intent.ACTION_MAIN, null);
-	    launchIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-	    ComponentName cn = new ComponentName("com.google.android.googlequicksearchbox",
-	    		"com.google.android.googlequicksearchbox.VoiceSearchActivity");
-	    launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-	    launchIntent.setComponent(cn);
+	    registerReceiver(mReceiver, filter);
 
-
-/*        final Handler handler = new Handler();
-        final long oneMinuteMs = 10 * 1000;
-
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                Log.e("LogTag", "Keyguard"+keyguardManager.isKeyguardSecure());
-                handler.postDelayed(this, oneMinuteMs);
-            }
-        };
-        handler.postDelayed(runnable, oneMinuteMs);*/
+        ComponentName cn = new ComponentName("com.google.android.googlequicksearchbox",
+                "com.google.android.googlequicksearchbox.VoiceSearchActivity");
+        launchIntent = new Intent();
+//        launchIntent = new Intent("android.intent.action.VOICE_ASSIST");
+        launchIntent.setFlags(0x1c082000);
+        launchIntent.setComponent(cn);
     }
     
     @Override
