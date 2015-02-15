@@ -42,7 +42,7 @@ public class HUD extends Service {
                 PixelFormat.TRANSLUCENT);
 	    WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
 	    LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-	    myView = inflater.inflate(R.layout.activity_main, null);
+	    myView = inflater.inflate(R.layout.empty_layout, null);
 
     // Add layout to window manager
 	    wm.addView(myView, params);	    	
@@ -54,16 +54,18 @@ public class HUD extends Service {
                 "com.google.android.googlequicksearchbox.VoiceSearchActivity");
         launchIntent = new Intent();
 //        launchIntent = new Intent("android.intent.action.VOICE_ASSIST");
-        launchIntent.setFlags(0x1c082000);
+//        launchIntent.setFlags(0x1c082000);
+        launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         launchIntent.setComponent(cn);
     }
     
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         startActivity(launchIntent);
+        
         return START_STICKY;
     }
-    
+
     @Override
     public void onDestroy() {
         super.onDestroy();

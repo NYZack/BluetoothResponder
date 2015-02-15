@@ -3,5 +3,7 @@
 
     <string name="app_name">BT GNow</string>
     <string name="hello_world">Hello world!</string>
+    <string name="say_ok_google">Say, \"OK Google\"</string>
+    <string name="title_settings">Settings</string>
 
 </resources>

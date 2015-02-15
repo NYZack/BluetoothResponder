@@ -1,0 +1,13 @@
+<resources>
+    <string name="pref_launchType">Choose method of launching Google Now</string>
+    <string name="pref_launchTypeDialog">To launch Google Now</string>
+    <string-array name="pref_launchType_entries">
+        <item>Launch by pressing handsfree alone</item>
+        <item>Say "Google Now" after pressing handsfree</item>
+    </string-array>
+    <string-array name="pref_launchType_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string name="pref_launchType_default">0</string>
+</resources>
