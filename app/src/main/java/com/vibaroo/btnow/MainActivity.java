@@ -25,14 +25,15 @@ public void onCreate(Bundle savedInstanceState) {
     this.requestWindowFeature(Window.FEATURE_NO_TITLE);
     setContentView(R.layout.activity_main);
 
-    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-    activateHow = Integer.parseInt(prefs.getString("pref_launch",getString(R.string.pref_launchType_default)));
-
     audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
 }
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        activateHow = Integer.parseInt(prefs.getString("pref_launch",getString(R.string.pref_launchType_default)));
+
         switch (activateHow) {
             case ACTIVATE_DIRECTLY:
                 startDirectly();
