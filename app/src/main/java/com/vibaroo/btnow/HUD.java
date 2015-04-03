@@ -61,8 +61,9 @@ public class HUD extends Service {
     
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        startActivity(launchIntent);
-        
+        if (intent != null) {
+            startActivity(launchIntent);
+        }
         return START_STICKY;
     }
 
